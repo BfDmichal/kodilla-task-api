@@ -11,24 +11,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-public class TasksApplication extends SpringBootServletInitializer {
+public class TasksApplication  {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TasksApplication.class);
-	}
-	//	@Bean
-//	public WebMvcConfigurer corsConfigurer(){
-//		return new WebMvcConfigurerAdapter() {
-//			@Override
-//			public void addCorsMappings(CorsRegistry registry) {
-//				registry.addMapping("/v1/task/**").allowedOrigins("*").allowedMethods("GET","POST","PUT","DELETE");
-//			}
-//		};
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(TasksApplication.class);
 //	}
+
 
 }
