@@ -74,14 +74,12 @@ public class TrelloClientTest {
     @Test
     public void shouldReturnEmptyList() throws URISyntaxException {
         //Given
-        TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
-        trelloBoards[0] = new TrelloBoardDto("test_board", "test_id", new ArrayList<>());
+        URI uri = new URI("http://test.com/members/username/boards?key=test&token=test&fields=name,id&lists=all");
+        when(restTemplate.getForObject(uri,TrelloBoardDto[].class)).thenReturn(null);
 
-        URI uri = new URI("http://test.com/members/usernam/boards?key=test&token=test&fields=name,id&lists=all");
-
-        when(restTemplate.getForObject(uri,TrelloBoardDto[].class)).thenReturn(trelloBoards);
         //When
         List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
+
         //Then
         Assert.assertEquals(0,fetchedTrelloBoards.size());
     }
