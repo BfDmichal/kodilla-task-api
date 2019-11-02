@@ -45,11 +45,11 @@ public class TrelloClientTest {
         URI uri = new URI("http://test.com/members/username/boards?key=test&token=test&fields=name,id&lists=all");
 
         when(restTemplate.getForObject(uri,TrelloBoardDto[].class)).thenReturn(trelloBoards);
+
         //When
-
         List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
-        //Then
 
+        //Then
         Assert.assertEquals(1,fetchedTrelloBoards.size());
         Assert.assertEquals("test_id",fetchedTrelloBoards.get(0).getId());
         Assert.assertEquals("test_board",fetchedTrelloBoards.get(0).getName());
@@ -57,6 +57,7 @@ public class TrelloClientTest {
     }
     @Test
     public void shouldCreateCard() throws URISyntaxException {
+        //Given
         TrelloCardDto trelloCardDto = new TrelloCardDto("Test task",
                 "Test Description", "top","list_id");
         URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20Description&pos=top&idList=list_id");
